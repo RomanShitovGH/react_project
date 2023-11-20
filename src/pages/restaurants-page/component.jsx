@@ -1,15 +1,15 @@
-import { Cards } from "../../components/Cards/component";
-import { NamesList } from "../../components/names-list/component";
+import { RestaurantsCards } from "../../components/restaurantsCards/component";
+import { RestaurantsTabs } from "../../components/restaurantsTabs/component";
 
 export const RestaurantPage = ({ restaurants }) => {
-  const reastaurantNames = Array.from(
+  const restaurantsNames = Array.from(
     new Set(restaurants.map(({ name }) => name))
   );
 
   return (
     <>
-      <NamesList reastaurantNames={reastaurantNames} />
-      <Cards restaurants={restaurants} />
+      <RestaurantsTabs restaurantsNames={restaurantsNames} />
+      <RestaurantsCards restaurants={restaurants} />
     </>
   );
 };

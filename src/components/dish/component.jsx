@@ -1,9 +1,7 @@
-export const Dish = ({ item }) => {
+export const Dish = ({ dish }) => {
   return (
     <>
-      <li>
-        {item.name}, price: {item.price}
-      </li>
+      {dish.name}, price: {dish.price}
     </>
   );
 };

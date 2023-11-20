@@ -1,15 +1,15 @@
 import { Dishes } from "../dishes/component";
 import { Reviews } from "../reviews/component";
 
-export const Card = ({ item }) => {
+export const RestaurantCard = ({ restaurant }) => {
   return (
     <div>
-      ReastaurantName: {item.name}
+      ReastaurantName: {restaurant.name}
       <br />
       Menu:
-      <Dishes menu={item.menu} />
+      <Dishes menu={restaurant.menu} />
       Reviews:
-      <Reviews reviews={item.reviews} />
+      <Reviews reviews={restaurant.reviews} />
     </div>
   );
 };
