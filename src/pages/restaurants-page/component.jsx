@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RestaurantsCards } from "../../components/restaurantsCards/component";
+import { RestaurantCard } from "../../components/restaurantCard/component";
 import { RestaurantsTabs } from "../../components/restaurantsTabs/component";
 
 export const RestaurantPage = ({ restaurants }) => {
@@ -9,7 +9,7 @@ export const RestaurantPage = ({ restaurants }) => {
 
   const [selectedTab, setSelectedTab] = useState();
 
-  const filteredRestaurant = restaurants.filter(
+  const filteredRestaurant = restaurants.find(
     ({ name }) => name === selectedTab
   );
 
@@ -23,8 +23,8 @@ export const RestaurantPage = ({ restaurants }) => {
         restaurantsNames={restaurantsNames}
         onTabSelect={(selectedTabName) => setSelectedTab(selectedTabName)}
       />
-      {}
-      <RestaurantsCards restaurants={filteredRestaurant} />
+
+      {filteredRestaurant && <RestaurantCard restaurant={filteredRestaurant} />}
     </>
   );
 };

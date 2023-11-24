@@ -17,9 +17,13 @@ export const Counter = ({ minValue, maxValue }) => {
 
   return (
     <>
-      <button onClick={counterDec}>-</button>
+      <button onClick={counterDec} disabled={counter <= minValue}>
+        -
+      </button>
       {counter}
-      <button onClick={counterInc}>+</button>
+      <button onClick={counterInc} disabled={counter >= maxValue}>
+        +
+      </button>
     </>
   );
 };
