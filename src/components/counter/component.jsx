@@ -1,27 +1,17 @@
-import { useState } from "react";
-
-export const Counter = ({ minValue, maxValue }) => {
-  const [counter, setCounter] = useState(0);
-
-  const counterInc = () => {
-    if (counter < maxValue) {
-      setCounter(counter + 1);
-    }
-  };
-
-  const counterDec = () => {
-    if (counter > minValue) {
-      setCounter(counter - 1);
-    }
-  };
-
+export const Counter = ({
+  value,
+  increment,
+  decriment,
+  minValue = 0,
+  maxValue = 5,
+}) => {
   return (
     <>
-      <button onClick={counterDec} disabled={counter <= minValue}>
+      <button onClick={decriment} disabled={value <= minValue}>
         -
       </button>
-      {counter}
-      <button onClick={counterInc} disabled={counter >= maxValue}>
+      {value}
+      <button onClick={increment} disabled={value >= maxValue}>
         +
       </button>
     </>
