@@ -1,4 +1,4 @@
-import { RestaurantTab } from "../restaurantTab/component";
+import { RestaurantTab } from "../restaurant-tab/component";
 
 export const RestaurantsTabs = ({ restaurantsNames, onTabSelect }) => {
   return (
