@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { RestaurantCard } from "../../components/restaurantCard/component";
-import { RestaurantsTabs } from "../../components/restaurantsTabs/component";
+import { RestaurantCard } from "../../components/restaurant-card/component";
+import { RestaurantsTabs } from "../../components/restaurants-tabs/component";
 
 export const RestaurantPage = ({ restaurants }) => {
   const restaurantsNames = Array.from(
@@ -23,7 +23,6 @@ export const RestaurantPage = ({ restaurants }) => {
         restaurantsNames={restaurantsNames}
         onTabSelect={(selectedTabName) => setSelectedTab(selectedTabName)}
       />
-
       {filteredRestaurant && <RestaurantCard restaurant={filteredRestaurant} />}
     </>
   );
