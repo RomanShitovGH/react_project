@@ -1,17 +1,18 @@
+import classNames from "classnames";
 import { Dishes } from "../dishes/component";
 import { ReviewForm } from "../review-form/component";
 import { Reviews } from "../reviews/component";
 
-export const RestaurantCard = ({ restaurant }) => {
+import styles from "./styles.module.css";
+
+export const RestaurantCard = ({ restaurant, className }) => {
   return (
-    <div>
-      ReastaurantName: {restaurant.name}
-      <br />
-      Menu:
-      <Dishes menu={restaurant.menu} />
-      Reviews:
-      <Reviews reviews={restaurant.reviews} />
-      <ReviewForm />
+    <div className={classNames(className)}>
+      <div className={styles.card}>ReastaurantName: {restaurant.name}</div>
+
+      <Dishes menu={restaurant.menu} className={styles.card} />
+      <Reviews reviews={restaurant.reviews} className={styles.card} />
+      <ReviewForm className={styles.card} />
     </div>
   );
 };

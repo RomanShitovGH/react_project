@@ -1,0 +1,13 @@
+.reviewForm {
+  min-height: 120px;
+}
+
+.inputBlock {
+  padding-top: 10px;
+  display: flex;
+  margin-left: 22px;
+}
+
+.inputField {
+  margin-left: 10px;
+}

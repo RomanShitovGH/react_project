@@ -1,5 +1,8 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { Counter } from "../counter/component";
+import classNames from "classnames";
+
+import styles from "./styles.module.css";
 
 const DEFAULT_FORM_VALUE = {
   name: "",
@@ -27,12 +30,13 @@ const reducer = (state, action) => {
   }
 };
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ className }) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
 
   return (
-    <div>
-      <div>
+    <div className={classNames(className, styles.reviewForm)}>
+      <div>Leave your review:</div>
+      <div className={styles.inputBlock}>
         <label htmlFor="name">Name</label>
         <input
           id="name"
@@ -41,9 +45,10 @@ export const ReviewForm = () => {
           onChange={(event) =>
             dispatch({ type: "setName", payload: event.target.value })
           }
+          className={styles.inputField}
         />
       </div>
-      <div>
+      <div className={styles.inputBlock}>
         <label htmlFor="text">Text</label>
         <input
           id="text"
@@ -52,9 +57,10 @@ export const ReviewForm = () => {
           onChange={(event) =>
             dispatch({ type: "setText", payload: event.target.value })
           }
+          className={styles.inputField}
         />
       </div>
-      <div>
+      <div className={styles.inputBlock}>
         <label htmlFor="rating">Rating</label>
         <Counter
           value={formValue.rating}
