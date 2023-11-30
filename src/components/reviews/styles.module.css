@@ -1,3 +1,5 @@
 .reviews {
   min-height: 120px;
+  border: 1px solid black;
+  border-radius: 5px;
 }

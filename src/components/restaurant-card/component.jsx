@@ -8,7 +8,9 @@ import styles from "./styles.module.css";
 export const RestaurantCard = ({ restaurant, className }) => {
   return (
     <div className={classNames(className)}>
-      <div className={styles.card}>ReastaurantName: {restaurant.name}</div>
+      <div className={classNames(styles.card, styles.cardBorder)}>
+        ReastaurantName: {restaurant.name}
+      </div>
 
       <Dishes menu={restaurant.menu} className={styles.card} />
       <Reviews reviews={restaurant.reviews} className={styles.card} />
