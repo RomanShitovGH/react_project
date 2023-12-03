@@ -3,6 +3,8 @@ import { RestaurantCard } from "../../components/restaurant-card/component";
 import { RestaurantsTabs } from "../../components/restaurants-tabs/component";
 
 import styles from "./styles.module.css";
+import classNames from "classnames";
+import { useTheme } from "../../components/theme-provider/hooks";
 
 export const RestaurantPage = ({ restaurants }) => {
   const restaurantsNames = Array.from(
@@ -15,12 +17,19 @@ export const RestaurantPage = ({ restaurants }) => {
     ({ name }) => name === selectedTab
   );
 
+  const { buttonTheme } = useTheme();
+
   if (!restaurants) {
     return null;
   }
 
   return (
-    <>
+    <div
+      className={classNames({
+        [styles.themeTrue]: buttonTheme,
+        [styles.themeFalse]: !buttonTheme,
+      })}
+    >
       <RestaurantsTabs
         restaurantsNames={restaurantsNames}
         onTabSelect={(selectedTabName) => setSelectedTab(selectedTabName)}
@@ -32,6 +41,6 @@ export const RestaurantPage = ({ restaurants }) => {
           className={styles.restaurantCard}
         />
       )}
-    </>
+    </div>
   );
 };
