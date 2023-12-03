@@ -1,3 +1,3 @@
-export const RestaurantTab = ({ restaurantName }) => {
-  return <button>{restaurantName}</button>;
+export const RestaurantTab = ({ restaurantName, onClick }) => {
+  return <button onClick={onClick}>{restaurantName}</button>;
 };

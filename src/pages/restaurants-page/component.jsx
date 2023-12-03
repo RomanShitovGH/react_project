@@ -1,4 +1,5 @@
-import { RestaurantsCards } from "../../components/restaurantsCards/component";
+import { useState } from "react";
+import { RestaurantCard } from "../../components/restaurantCard/component";
 import { RestaurantsTabs } from "../../components/restaurantsTabs/component";
 
 export const RestaurantPage = ({ restaurants }) => {
@@ -6,10 +7,24 @@ export const RestaurantPage = ({ restaurants }) => {
     new Set(restaurants.map(({ name }) => name))
   );
 
+  const [selectedTab, setSelectedTab] = useState();
+
+  const filteredRestaurant = restaurants.find(
+    ({ name }) => name === selectedTab
+  );
+
+  if (!restaurants) {
+    return null;
+  }
+
   return (
     <>
-      <RestaurantsTabs restaurantsNames={restaurantsNames} />
-      <RestaurantsCards restaurants={restaurants} />
+      <RestaurantsTabs
+        restaurantsNames={restaurantsNames}
+        onTabSelect={(selectedTabName) => setSelectedTab(selectedTabName)}
+      />
+
+      {filteredRestaurant && <RestaurantCard restaurant={filteredRestaurant} />}
     </>
   );
 };
