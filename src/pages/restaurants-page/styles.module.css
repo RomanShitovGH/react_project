@@ -6,13 +6,3 @@
   margin-left: 40px;
   margin-right: 40px;
 }
-
-.themeTrue button {
-  color: green;
-}
-
-.themeFalse button {
-  color: red;
-  border-radius: 10%;
-  font-weight: bold;
-}

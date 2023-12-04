@@ -24,12 +24,7 @@ export const RestaurantPage = ({ restaurants }) => {
   }
 
   return (
-    <div
-      className={classNames({
-        [styles.themeTrue]: buttonTheme,
-        [styles.themeFalse]: !buttonTheme,
-      })}
-    >
+    <div>
       <RestaurantsTabs
         restaurantsNames={restaurantsNames}
         onTabSelect={(selectedTabName) => setSelectedTab(selectedTabName)}

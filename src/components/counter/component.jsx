@@ -8,15 +8,23 @@ export const Counter = ({
   decriment,
   minValue = 0,
   maxValue = 5,
-  className = "",
+  classNameButton = "",
 }) => {
   return (
-    <div className={classNames(className, styles.counter)}>
-      <button onClick={decriment} disabled={value <= minValue}>
+    <div className={classNames(styles.counter)}>
+      <button
+        onClick={decriment}
+        disabled={value <= minValue}
+        className={classNames(classNameButton)}
+      >
         -
       </button>
       <div className={styles.counterValue}>{value}</div>
-      <button onClick={increment} disabled={value >= maxValue}>
+      <button
+        onClick={increment}
+        disabled={value >= maxValue}
+        className={classNames(classNameButton)}
+      >
         +
       </button>
     </div>

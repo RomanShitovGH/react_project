@@ -5,3 +5,13 @@
 .price {
   min-width: 20px;
 }
+
+.themeTrue {
+  color: green;
+}
+
+.themeFalse {
+  color: red;
+  border-radius: 10%;
+  font-weight: bold;
+}

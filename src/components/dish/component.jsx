@@ -3,9 +3,12 @@ import { Counter } from "../counter/component";
 
 import styles from "./styles.module.css";
 import classNames from "classnames";
+import { useTheme } from "../theme-provider/hooks";
 
 export const Dish = ({ dish, className }) => {
   const [amount, setAmount] = useState(0);
+
+  const { buttonTheme } = useTheme();
 
   if (!dish) {
     return null;
@@ -19,6 +22,10 @@ export const Dish = ({ dish, className }) => {
         value={amount}
         increment={() => setAmount(amount + 1)}
         decriment={() => setAmount(amount - 1)}
+        classNameButton={{
+          [styles.themeTrue]: buttonTheme,
+          [styles.themeFalse]: !buttonTheme,
+        }}
       />
     </div>
   );
