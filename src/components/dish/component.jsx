@@ -19,6 +19,7 @@ export const Dish = ({ dish, className }) => {
         value={amount}
         increment={() => setAmount(amount + 1)}
         decriment={() => setAmount(amount - 1)}
+        className={styles.counterPosition}
       />
     </div>
   );
