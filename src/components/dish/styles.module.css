@@ -1,7 +1,13 @@
 .dish {
   display: flex;
+  padding-bottom: 5px;
 }
 
 .price {
   min-width: 20px;
+}
+
+.counterPosition {
+  margin-left: 10px;
+  margin-right: 10px;
 }
