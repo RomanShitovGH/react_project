@@ -2,6 +2,8 @@ import { useState } from "react";
 import { RestaurantCard } from "../../components/restaurant-card/component";
 import { RestaurantsTabs } from "../../components/restaurants-tabs/component";
 
+import styles from "./styles.module.css";
+
 export const RestaurantPage = ({ restaurants }) => {
   const restaurantsNames = Array.from(
     new Set(restaurants.map(({ name }) => name))
@@ -22,8 +24,14 @@ export const RestaurantPage = ({ restaurants }) => {
       <RestaurantsTabs
         restaurantsNames={restaurantsNames}
         onTabSelect={(selectedTabName) => setSelectedTab(selectedTabName)}
+        className={styles.restaurantTabs}
       />
-      {filteredRestaurant && <RestaurantCard restaurant={filteredRestaurant} />}
+      {filteredRestaurant && (
+        <RestaurantCard
+          restaurant={filteredRestaurant}
+          className={styles.restaurantCard}
+        />
+      )}
     </>
   );
 };

@@ -1,0 +1,7 @@
+.dish {
+  display: flex;
+}
+
+.price {
+  min-width: 20px;
+}

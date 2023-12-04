@@ -1,14 +1,23 @@
+import classNames from "classnames";
 import { RestaurantTab } from "../restaurant-tab/component";
 
-export const RestaurantsTabs = ({ restaurantsNames, onTabSelect }) => {
+import styles from "./styles.module.css";
+
+export const RestaurantsTabs = ({
+  restaurantsNames,
+  onTabSelect,
+  className,
+}) => {
   return (
-    <ul>
-      {restaurantsNames.map((item) => (
-        <RestaurantTab
-          restaurantName={item}
-          onClick={() => onTabSelect(item)}
-        />
-      ))}
-    </ul>
+    <div className={classNames(styles.tabs, className)}>
+      <ul className={styles.tabsUl}>
+        {restaurantsNames.map((item) => (
+          <RestaurantTab
+            restaurantName={item}
+            onClick={() => onTabSelect(item)}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
