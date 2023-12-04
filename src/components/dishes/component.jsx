@@ -10,7 +10,7 @@ export const Dishes = ({ menu, className }) => {
       <ul>
         {menu.map((item) => (
           <li>
-            <Dish dish={item} className={styles.dishBlock} />
+            <Dish dish={item} />
           </li>
         ))}
       </ul>

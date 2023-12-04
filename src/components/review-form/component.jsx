@@ -72,6 +72,7 @@ export const ReviewForm = ({ className }) => {
           }
           minValue={1}
           maxValue={5}
+          className={styles.counterPosition}
         />
       </div>
     </div>
