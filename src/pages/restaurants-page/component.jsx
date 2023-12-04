@@ -17,8 +17,6 @@ export const RestaurantPage = ({ restaurants }) => {
     ({ name }) => name === selectedTab
   );
 
-  const { buttonTheme } = useTheme();
-
   if (!restaurants) {
     return null;
   }

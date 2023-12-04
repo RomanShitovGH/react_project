@@ -13,13 +13,3 @@
 .inputField {
   margin-left: 10px;
 }
-
-.themeTrue {
-  color: green;
-}
-
-.themeFalse {
-  color: red;
-  border-radius: 10%;
-  font-weight: bold;
-}

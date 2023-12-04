@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 import styles from "./styles.module.css";
+import { useTheme } from "../theme-provider/hooks";
 
 export const Counter = ({
   value,
@@ -8,14 +9,19 @@ export const Counter = ({
   decriment,
   minValue = 0,
   maxValue = 5,
-  classNameButton = "",
+  className = "",
 }) => {
+  const { buttonTheme } = useTheme();
+
   return (
-    <div className={classNames(styles.counter)}>
+    <div className={classNames(className, styles.counter)}>
       <button
         onClick={decriment}
         disabled={value <= minValue}
-        className={classNames(classNameButton)}
+        className={classNames({
+          [styles.themeTrue]: buttonTheme,
+          [styles.themeFalse]: !buttonTheme,
+        })}
       >
         -
       </button>
@@ -23,7 +29,10 @@ export const Counter = ({
       <button
         onClick={increment}
         disabled={value >= maxValue}
-        className={classNames(classNameButton)}
+        className={classNames({
+          [styles.themeTrue]: buttonTheme,
+          [styles.themeFalse]: !buttonTheme,
+        })}
       >
         +
       </button>

@@ -3,7 +3,6 @@ import { Counter } from "../counter/component";
 import classNames from "classnames";
 
 import styles from "./styles.module.css";
-import { useTheme } from "../theme-provider/hooks";
 
 const DEFAULT_FORM_VALUE = {
   name: "",
@@ -33,8 +32,6 @@ const reducer = (state, action) => {
 
 export const ReviewForm = ({ className }) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
-
-  const { buttonTheme } = useTheme();
 
   return (
     <div className={classNames(className, styles.reviewForm)}>
@@ -75,10 +72,6 @@ export const ReviewForm = ({ className }) => {
           }
           minValue={1}
           maxValue={5}
-          classNameButton={{
-            [styles.themeTrue]: buttonTheme,
-            [styles.themeFalse]: !buttonTheme,
-          }}
         />
       </div>
     </div>
