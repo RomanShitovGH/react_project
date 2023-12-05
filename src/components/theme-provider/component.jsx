@@ -1,11 +1,15 @@
 import { useCallback, useState } from "react";
 import { ThemeContext } from "./context";
+import { DEFAULT_THEME } from "./constants";
 
-export const ThemeProvider = ({ children }) => {
-  const [buttonTheme, setButtonTheme] = useState(true);
+export const ThemeProvider = ({ children, defultTheme = DEFAULT_THEME }) => {
+  const [buttonTheme, setButtonTheme] = useState(defultTheme);
 
   const changeButtonTheme = useCallback(
-    () => setButtonTheme((currentTheme) => !currentTheme),
+    () =>
+      setButtonTheme((currentTheme) =>
+        currentTheme === "light" ? "dark" : "light"
+      ),
     []
   );
 

@@ -1,0 +1,9 @@
+.light {
+  color: green;
+}
+
+.dark {
+  color: red;
+  border-radius: 10%;
+  font-weight: bold;
+}

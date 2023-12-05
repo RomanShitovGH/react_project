@@ -8,13 +8,3 @@
   min-width: 20px;
   text-align: center;
 }
-
-.themeTrue {
-  color: green;
-}
-
-.themeFalse {
-  color: red;
-  border-radius: 10%;
-  font-weight: bold;
-}
