@@ -1,9 +1,11 @@
+import classNames from "classnames";
 import styles from "./styles.module.css";
+import { Button } from "../button/component";
 
 export const RestaurantTab = ({ restaurantName, onClick }) => {
   return (
-    <button onClick={onClick} className={styles.tab}>
+    <Button onClick={onClick} className={classNames(styles.tab)}>
       {restaurantName}
-    </button>
+    </Button>
   );
 };

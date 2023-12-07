@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 import styles from "./styles.module.css";
+import { Button } from "../button/component";
 
 export const Counter = ({
   value,
@@ -12,13 +13,13 @@ export const Counter = ({
 }) => {
   return (
     <div className={classNames(className, styles.counter)}>
-      <button onClick={decriment} disabled={value <= minValue}>
+      <Button onClick={decriment} disabled={value <= minValue}>
         -
-      </button>
+      </Button>
       <div className={styles.counterValue}>{value}</div>
-      <button onClick={increment} disabled={value >= maxValue}>
+      <Button onClick={increment} disabled={value >= maxValue}>
         +
-      </button>
+      </Button>
     </div>
   );
 };

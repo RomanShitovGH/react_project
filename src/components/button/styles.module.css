@@ -1,12 +1,8 @@
-.tab {
-  white-space: nowrap;
-}
-
-.themeTrue {
+.light {
   color: green;
 }
 
-.themeFalse {
+.dark {
   color: red;
   border-radius: 10%;
   font-weight: bold;
