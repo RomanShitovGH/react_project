@@ -3,14 +3,14 @@ import { Review } from "../review/component";
 
 import styles from "./styles.module.css";
 
-export const Reviews = ({ reviews, className }) => {
+export const Reviews = ({ reviewsIds, className }) => {
   return (
     <div className={classNames(className, styles.reviews)}>
       Reviews:
       <ul>
-        {reviews.map((item) => (
+        {reviewsIds.map((reviewId) => (
           <li>
-            <Review item={item} />
+            <Review reviewId={reviewId} />
           </li>
         ))}
       </ul>
