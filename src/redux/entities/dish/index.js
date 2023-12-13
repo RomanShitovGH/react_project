@@ -17,10 +17,11 @@ export const dishSlice = createSlice({
       .addCase(getDishesByRestaurantId.fulfilled, (state, { payload }) => {
         state.entities = payload.reduce((acc, dish) => {
           acc[dish.id] = dish;
-
           return acc;
-        }, {});
-        state.ids = payload.map(({ id }) => id);
+        }, state.entities);
+        state.ids = Array.from(
+          new Set([...state.ids, ...payload.map(({ id }) => id)])
+        );
         state.status = REQUEST_STATUSES.fullfield;
       })
       .addCase(getDishesByRestaurantId.rejected, (state) => {
