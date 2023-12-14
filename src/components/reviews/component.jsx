@@ -5,9 +5,11 @@ import styles from "./styles.module.css";
 import { useGetReviewsQuery } from "../../redux/services/api";
 
 export const Reviews = ({ restaurant, className }) => {
-  const { data, isFetching } = useGetReviewsQuery(restaurant.id);
+  const { data, isLoading } = useGetReviewsQuery(restaurant.id, {
+    pollingInterval: 10000,
+  });
 
-  if (isFetching) {
+  if (isLoading) {
     return "Загрузка";
   }
 
