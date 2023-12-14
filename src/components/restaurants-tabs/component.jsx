@@ -2,27 +2,22 @@ import classNames from "classnames";
 import { RestaurantTab } from "../restaurant-tab/component";
 
 import styles from "./styles.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { selectRestaurantIds } from "../../redux/entities/restaurant/selectors";
-import { useEffect } from "react";
-import { getRestaurants } from "../../redux/entities/restaurant/thunks/get-restaurants";
+import { useGetRestaurantsQuery } from "../../redux/services/api";
 
 export const RestaurantsTabs = ({ onTabSelect, className }) => {
-  const restaurant = useSelector(selectRestaurantIds);
+  const { data } = useGetRestaurantsQuery();
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getRestaurants());
-  }, []);
+  if (!data) {
+    return null;
+  }
 
   return (
     <div className={classNames(styles.tabs, className)}>
       <ul className={styles.tabsUl}>
-        {restaurant.map((restaurantId) => (
+        {data.map((rastaurant) => (
           <RestaurantTab
-            id={restaurantId}
-            onClick={() => onTabSelect(restaurantId)}
+            rastaurant={rastaurant}
+            onClick={() => onTabSelect(rastaurant.id)}
           />
         ))}
       </ul>
