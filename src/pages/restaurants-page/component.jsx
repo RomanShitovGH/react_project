@@ -4,34 +4,21 @@ import { RestaurantsTabs } from "../../components/restaurants-tabs/component";
 
 import styles from "./styles.module.css";
 
-export const RestaurantPage = ({ restaurants }) => {
-  const restaurantsNames = Array.from(
-    new Set(restaurants.map(({ name }) => name))
-  );
-
+export const RestaurantPage = () => {
   const [selectedTab, setSelectedTab] = useState();
 
-  const filteredRestaurant = restaurants.find(
-    ({ name }) => name === selectedTab
-  );
-
-  if (!restaurants) {
-    return null;
-  }
-
   return (
-    <>
+    <div>
       <RestaurantsTabs
-        restaurantsNames={restaurantsNames}
         onTabSelect={(selectedTabName) => setSelectedTab(selectedTabName)}
         className={styles.restaurantTabs}
       />
-      {filteredRestaurant && (
+      {selectedTab && (
         <RestaurantCard
-          restaurant={filteredRestaurant}
+          restaurantId={selectedTab}
           className={styles.restaurantCard}
         />
       )}
-    </>
+    </div>
   );
 };

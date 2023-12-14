@@ -3,9 +3,13 @@ import { Counter } from "../counter/component";
 
 import styles from "./styles.module.css";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { selectDishById } from "../../redux/features/entities/dish/selectors";
 
-export const Dish = ({ dish, className }) => {
+export const Dish = ({ dishId, className }) => {
   const [amount, setAmount] = useState(0);
+
+  const dish = useSelector((state) => selectDishById(state, dishId));
 
   if (!dish) {
     return null;
