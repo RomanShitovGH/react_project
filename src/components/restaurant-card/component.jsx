@@ -4,14 +4,8 @@ import { ReviewForm } from "../review-form/component";
 import { Reviews } from "../reviews/component";
 
 import styles from "./styles.module.css";
-import { useSelector } from "react-redux";
-import { selectRestaurantByIds } from "../../redux/entities/restaurant/selectors";
 
-export const RestaurantCard = ({ restaurantId, className }) => {
-  const restaurant = useSelector((state) =>
-    selectRestaurantByIds(state, restaurantId)
-  );
-
+export const RestaurantCard = ({ restaurant, className }) => {
   if (!restaurant) {
     return null;
   }
@@ -22,9 +16,9 @@ export const RestaurantCard = ({ restaurantId, className }) => {
         ReastaurantName: {restaurant.name}
       </div>
 
-      <Dishes restaurantId={restaurantId} className={styles.card} />
-      <Reviews restaurantId={restaurantId} className={styles.card} />
-      <ReviewForm className={styles.card} />
+      <Dishes restaurant={restaurant} className={styles.card} />
+      <Reviews restaurant={restaurant} className={styles.card} />
+      <ReviewForm restaurant={restaurant} className={styles.card} />
     </div>
   );
 };

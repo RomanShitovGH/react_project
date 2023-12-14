@@ -2,29 +2,24 @@ import classNames from "classnames";
 import { Review } from "../review/component";
 
 import styles from "./styles.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { selectReviewsIdsByRestaurantId } from "../../redux/entities/restaurant/selectors";
-import { useEffect } from "react";
-import { getReviewsByRestaurantId } from "../../redux/entities/review/thunks/get-reviews-by-restaurant-id";
+import { useGetReviewsQuery } from "../../redux/services/api";
 
-export const Reviews = ({ restaurantId, className }) => {
-  const dispatch = useDispatch();
+export const Reviews = ({ restaurant, className }) => {
+  const { data, isLoading } = useGetReviewsQuery(restaurant.id, {
+    pollingInterval: 10000,
+  });
 
-  const reviews = useSelector((state) =>
-    selectReviewsIdsByRestaurantId(state, restaurantId)
-  );
-
-  useEffect(() => {
-    dispatch(getReviewsByRestaurantId(restaurantId));
-  }, [restaurantId]);
+  if (isLoading) {
+    return "Загрузка";
+  }
 
   return (
     <div className={classNames(className, styles.reviews)}>
       Reviews:
       <ul>
-        {reviews.map((reviewId) => (
+        {data.map((review) => (
           <li>
-            <Review reviewId={reviewId} />
+            <Review review={review} />
           </li>
         ))}
       </ul>

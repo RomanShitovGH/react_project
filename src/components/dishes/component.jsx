@@ -2,29 +2,22 @@ import classNames from "classnames";
 import { Dish } from "../dish/component";
 
 import styles from "./styles.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getDishesByRestaurantId } from "../../redux/entities/dish/thunks/get-dishes-by-restaurant-id";
-import { selectDishesIdsByRestaurantId } from "../../redux/entities/restaurant/selectors";
+import { useGetDishesQuery } from "../../redux/services/api";
 
-export const Dishes = ({ restaurantId, className }) => {
-  const dispatch = useDispatch();
+export const Dishes = ({ restaurant, className }) => {
+  const { data, isFetching } = useGetDishesQuery(restaurant.id);
 
-  const dishes = useSelector((state) =>
-    selectDishesIdsByRestaurantId(state, restaurantId)
-  );
-
-  useEffect(() => {
-    dispatch(getDishesByRestaurantId(restaurantId));
-  }, [restaurantId]);
+  if (isFetching) {
+    return "Загрузка";
+  }
 
   return (
     <div className={classNames(className, styles.dishes)}>
       Menu:
       <ul>
-        {dishes.map((dishId) => (
+        {data?.map((dish) => (
           <li>
-            <Dish dishId={dishId} />
+            <Dish dish={dish} />
           </li>
         ))}
       </ul>

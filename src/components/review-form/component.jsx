@@ -3,6 +3,10 @@ import { Counter } from "../counter/component";
 import classNames from "classnames";
 
 import styles from "./styles.module.css";
+import {
+  useCreateReviewsMutation,
+  useGetUsersQuery,
+} from "../../redux/services/api";
 
 const DEFAULT_FORM_VALUE = {
   name: "",
@@ -30,9 +34,13 @@ const reducer = (state, action) => {
   }
 };
 
-export const ReviewForm = ({ className }) => {
+export const ReviewForm = ({ restaurant, className }) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
 
+  const [createReaview] = useCreateReviewsMutation();
+
+  const { data } = useGetUsersQuery();
+  console.log("data =", data);
   return (
     <div className={classNames(className, styles.reviewForm)}>
       <div>Leave your review:</div>
@@ -75,6 +83,20 @@ export const ReviewForm = ({ className }) => {
           className={styles.counterPosition}
         />
       </div>
+      <button
+        onClick={() =>
+          createReaview({
+            restaurantId: restaurant.id,
+            newReview: {
+              userId: data?.[0].id,
+              text: formValue.text,
+              rating: formValue.rating,
+            },
+          })
+        }
+      >
+        Save
+      </button>
     </div>
   );
 };
