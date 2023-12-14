@@ -3,14 +3,14 @@ import { Dish } from "../dish/component";
 
 import styles from "./styles.module.css";
 
-export const Dishes = ({ menu, className }) => {
+export const Dishes = ({ dishesIds, className }) => {
   return (
     <div className={classNames(className, styles.dishes)}>
       Menu:
       <ul>
-        {menu.map((item) => (
+        {dishesIds.map((dishId) => (
           <li>
-            <Dish dish={item} />
+            <Dish dishId={dishId} />
           </li>
         ))}
       </ul>
