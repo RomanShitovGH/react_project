@@ -5,23 +5,11 @@ import { Reviews } from "../reviews/component";
 
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
-import {
-  selectRestaurantByIds,
-  selectDishesIdsByRestaurantId,
-  selectReviewsIdsByRestaurantId,
-} from "../../redux/features/entities/restaurant/selectors";
+import { selectRestaurantByIds } from "../../redux/entities/restaurant/selectors";
 
 export const RestaurantCard = ({ restaurantId, className }) => {
   const restaurant = useSelector((state) =>
     selectRestaurantByIds(state, restaurantId)
-  );
-
-  const dishesIds = useSelector((state) =>
-    selectDishesIdsByRestaurantId(state, restaurantId)
-  );
-
-  const reviewsIds = useSelector((state) =>
-    selectReviewsIdsByRestaurantId(state, restaurantId)
   );
 
   if (!restaurant) {
@@ -34,8 +22,8 @@ export const RestaurantCard = ({ restaurantId, className }) => {
         ReastaurantName: {restaurant.name}
       </div>
 
-      <Dishes dishesIds={dishesIds} className={styles.card} />
-      <Reviews reviewsIds={reviewsIds} className={styles.card} />
+      <Dishes restaurantId={restaurantId} className={styles.card} />
+      <Reviews restaurantId={restaurantId} className={styles.card} />
       <ReviewForm className={styles.card} />
     </div>
   );
