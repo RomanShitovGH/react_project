@@ -4,7 +4,7 @@ import { Counter } from "../counter/component";
 import styles from "./styles.module.css";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/features/entities/dish/selectors";
+import { selectDishById } from "../../redux/entities/dish/selectors";
 
 export const Dish = ({ dishId, className }) => {
   const [amount, setAmount] = useState(0);

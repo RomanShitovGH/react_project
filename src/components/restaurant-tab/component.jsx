@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import styles from "./styles.module.css";
 import { Button } from "../button/component";
-import { selectRestaurantByIds } from "../../redux/features/entities/restaurant/selectors";
+import { selectRestaurantByIds } from "../../redux/entities/restaurant/selectors";
 import { useSelector } from "react-redux";
 
 export const RestaurantTab = ({ id, onClick }) => {
