@@ -19,7 +19,7 @@ export const Main = () => {
             <Route path="restaurants" element={<RestaurantPage />}>
               <Route index element={<div>Выбирите ресторан</div>} />
               <Route path=":restaurantId" element={<RestaurantCard />}>
-                <Route index element={<div>Выбирите меню или отзывы</div>} />
+                <Route index element={<MenuContainer />} />
                 <Route path="menu" element={<MenuContainer />} />
                 <Route path="reviews" element={<ReviewsContainer />} />
               </Route>

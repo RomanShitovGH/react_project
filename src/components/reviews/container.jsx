@@ -9,7 +9,7 @@ export const ReviewsContainer = () => {
   const { data, isFetching } = useGetReviewsQuery(restaurantId);
 
   if (isFetching) {
-    return "Загрузка данных по ресторану";
+    return "Загрузка отзывов";
   }
   return <Reviews restaurant={data} className={styles.card} />;
 };

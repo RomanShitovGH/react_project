@@ -9,7 +9,7 @@ export const MenuContainer = () => {
   const { data, isFetching } = useGetDishesQuery(restaurantId);
 
   if (isFetching) {
-    return "Загрузка данных по ресторану";
+    return "Загрузка меню";
   }
 
   return <Dishes restaurant={data} className={styles.card} />;
