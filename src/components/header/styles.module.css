@@ -2,3 +2,14 @@
   background-color: cadetblue;
   height: 60px;
 }
+
+.link {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.active {
+  color: grey;
+  cursor: default;
+}

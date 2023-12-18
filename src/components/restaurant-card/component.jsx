@@ -1,24 +1,24 @@
 import classNames from "classnames";
-import { Dishes } from "../dishes/component";
-import { ReviewForm } from "../review-form/component";
-import { Reviews } from "../reviews/component";
-
 import styles from "./styles.module.css";
+import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useGetRestaurantQuery } from "../../redux/services/api";
 
-export const RestaurantCard = ({ restaurant, className }) => {
-  if (!restaurant) {
-    return null;
+export const RestaurantCard = ({ className }) => {
+  const { restaurantId } = useParams();
+  const { data, isFetching } = useGetRestaurantQuery(restaurantId);
+
+  if (isFetching) {
+    return "Загрузка данных по ресторану";
   }
 
   return (
     <div className={classNames(className)}>
       <div className={classNames(styles.card, styles.cardBorder)}>
-        ReastaurantName: {restaurant.name}
+        ReastaurantName: {data.name}
       </div>
-
-      <Dishes restaurant={restaurant} className={styles.card} />
-      <Reviews restaurant={restaurant} className={styles.card} />
-      <ReviewForm restaurant={restaurant} className={styles.card} />
+      <NavLink to="menu">Меню</NavLink>
+      <NavLink to="reviews">Отзывы</NavLink>
+      <Outlet />
     </div>
   );
 };

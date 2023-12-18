@@ -2,22 +2,13 @@ import classNames from "classnames";
 import { Review } from "../review/component";
 
 import styles from "./styles.module.css";
-import { useGetReviewsQuery } from "../../redux/services/api";
 
 export const Reviews = ({ restaurant, className }) => {
-  const { data, isLoading } = useGetReviewsQuery(restaurant.id, {
-    pollingInterval: 10000,
-  });
-
-  if (isLoading) {
-    return "Загрузка";
-  }
-
   return (
     <div className={classNames(className, styles.reviews)}>
       Reviews:
       <ul>
-        {data.map((review) => (
+        {restaurant.map((review) => (
           <li>
             <Review review={review} />
           </li>

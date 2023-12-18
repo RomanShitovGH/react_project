@@ -4,7 +4,7 @@ import { RestaurantTab } from "../restaurant-tab/component";
 import styles from "./styles.module.css";
 import { useGetRestaurantsQuery } from "../../redux/services/api";
 
-export const RestaurantsTabs = ({ onTabSelect, className }) => {
+export const RestaurantsTabs = ({ className }) => {
   const { data } = useGetRestaurantsQuery();
 
   if (!data) {
@@ -15,10 +15,7 @@ export const RestaurantsTabs = ({ onTabSelect, className }) => {
     <div className={classNames(styles.tabs, className)}>
       <ul className={styles.tabsUl}>
         {data.map((rastaurant) => (
-          <RestaurantTab
-            rastaurant={rastaurant}
-            onClick={() => onTabSelect(rastaurant.id)}
-          />
+          <RestaurantTab rastaurant={rastaurant} />
         ))}
       </ul>
     </div>
